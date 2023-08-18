@@ -5,5 +5,8 @@
   "InstallPython": true,
   "ExtractPip": true,
   "ExtractPredictionModel": true,
-  "StartPredictionModel": true
+  "StartPredictionModel": true,
+  "InstallService": true,
+  "WindowsServiceName": "PredictionModelService",
+  "WindowsServicePath": "C:\\PredictionModel\\WindowsService.exe"
 }

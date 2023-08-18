@@ -82,7 +82,7 @@ public class Program
 
         await StartProcess(
             filename: "powershell.exe",
-            arguments: $"expand-archive -path ./bin.zip -DestinationPath {_config.PredictionModelPath} -Force",
+            arguments: $"expand-archive -path ./Python310.zip -DestinationPath {_config.PythonPath} -Force",
             stdOut: true,
             wait: true
         );
@@ -106,6 +106,21 @@ public class Program
 
         Log("PredictionModel has been extracted");
     }
+
+    private static async Task InstallService()
+    {
+        Log("Install WindowsService");
+
+        await StartProcess(
+            filename: "powershell.exe",
+            arguments: $"{_config.WindowsServicePath} && net start {_config.WindowsServiceName}",
+            stdOut: true,
+            wait: true
+        );
+
+        Log("WindowsService has been installed");
+    }
+
 
     /// <summary>
     /// Starts the prediction model api 
@@ -141,7 +156,7 @@ public class Program
 
             if (_config.ExtractPredictionModel)
                 await ExtractPredictionModel();
-
+            if (_config.InstallService) await InstallService();
             if (_config.StartPredictionModel)
                 await StartPredictionModel();
         }

@@ -20,5 +20,8 @@ namespace PredictionModelSetup
         public bool ExtractPredictionModel { get; init; }
 
         public bool StartPredictionModel { get; init; }
+        public bool InstallService { get; init; }
+        public string WindowsServiceName { get; init; }
+        public string WindowsServicePath { get; init; }
     }
 }
