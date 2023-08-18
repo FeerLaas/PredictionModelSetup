@@ -1,0 +1,9 @@
+{
+  "PythonPath": "C:\\Python310",
+  "PredictionModelPath": "C:\\PredictionModel",
+  "PredictionModelPort": "7979",
+  "InstallPython": true,
+  "ExtractPip": true,
+  "ExtractPredictionModel": true,
+  "StartPredictionModel": true
+}
