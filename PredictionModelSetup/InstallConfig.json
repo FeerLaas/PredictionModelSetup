@@ -7,6 +7,6 @@
   "ExtractPredictionModel": true,
   "StartPredictionModel": true,
   "InstallService": true,
-  "WindowsServiceName": "PredictionModelService",
-  "WindowsServicePath": "C:\\PredictionModel\\WindowsService.exe"
+  "WindowsServiceName": "MoanaAiServiceDebug",
+  "WindowsServicePath": "C:\\PredictionModel\\Service\\MoanaAiService.exe"
 }

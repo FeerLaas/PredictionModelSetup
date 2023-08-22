@@ -63,7 +63,7 @@ public class Program
         Log("Installing Python v3.10.11");
 
         await StartProcess(
-            filename: Path.Combine(_config.PredictionModelPath+"python.exe"),
+            filename: Path.Combine(_config.PredictionModelPath,"python.exe"),
             arguments: $@"/quiet TargetDir=""{_config.PythonPath}"" InstallAllUsers=1 PrependPath=1",
             stdOut: true,
             wait: true
@@ -113,7 +113,7 @@ public class Program
 
         await StartProcess(
             filename: "powershell.exe",
-            arguments: $"{_config.WindowsServicePath} && net start {_config.WindowsServiceName}",
+            arguments: $"{_config.WindowsServicePath} install; net start {_config.WindowsServiceName}",
             stdOut: true,
             wait: true
         );
@@ -158,8 +158,8 @@ public class Program
                 await ExtractPipPackages();
 
             if (_config.InstallService) await InstallService();
-            if (_config.StartPredictionModel)
-                await StartPredictionModel();
+            //if (_config.StartPredictionModel)
+            //    await StartPredictionModel();
         }
         catch (Exception ex)
         {
