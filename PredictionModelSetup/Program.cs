@@ -63,7 +63,7 @@ public class Program
         Log("Installing Python v3.10.11");
 
         await StartProcess(
-            filename: "python.exe",
+            filename: Path.Combine(_config.PredictionModelPath+"python.exe"),
             arguments: $@"/quiet TargetDir=""{_config.PythonPath}"" InstallAllUsers=1 PrependPath=1",
             stdOut: true,
             wait: true
@@ -148,14 +148,15 @@ public class Program
 
             SetEnvironmentVariables();
 
+            if (_config.ExtractPredictionModel)
+                await ExtractPredictionModel();
+
             if (_config.InstallPython)
                 await InstallPython();
 
             if (_config.ExtractPip)
                 await ExtractPipPackages();
 
-            if (_config.ExtractPredictionModel)
-                await ExtractPredictionModel();
             if (_config.InstallService) await InstallService();
             if (_config.StartPredictionModel)
                 await StartPredictionModel();
